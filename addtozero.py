@@ -24,6 +24,18 @@ zero for both numbers, and they sum to zero:
 def add_to_zero(nums):
     """Given list of ints, return True if any two nums in list sum to 0."""
 
+    # since I want to know if the negative of the number is in the list
+    # make it a set for O(1) time rather than the O(n) lookup time of list
+    set_nums = set(nums)
+
+    for num in nums:
+        # don't actually need this since python considers -0 == 0
+        if num == 0:
+            return True
+        elif -num in nums:
+            return True
+    return False
+
 
 if __name__ == '__main__':
     import doctest
